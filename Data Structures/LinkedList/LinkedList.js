@@ -36,17 +36,11 @@ class LinkedList {
             newNode.next = this.head;
             this.head = newNode;
         }
-        let counter = 0
 
-        let tail = this.head;
-        while (tail.next) {
-            if (counter === index) {
-                newNode.next = tail.next;
-                tail.next = newNode;
-            }
-            tail = tail.next
-            counter++;
-        }
+        let n = this.getNodeAt(index - 1);
+        newNode.next = n.next;
+        n.next = newNode;
+        this.size++;
         return this.head;
     }
 
@@ -57,7 +51,8 @@ class LinkedList {
 
         let count = 0;
         let newNode = this.head;
-        while (newNode.next) {
+
+        while (newNode) {
             if (index === count) {
                 return newNode;
             }
@@ -72,6 +67,13 @@ class LinkedList {
             console.log(node.data);
             node = node.next;
         }
+    }
+
+    deleteNodeAt(index) {
+        let prevNode = this.getNodeAt(index - 1);
+        prevNode.next = prevNode.next.next;
+        this.size--;
+        return this.head;
     }
 }
 

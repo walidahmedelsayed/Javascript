@@ -33,7 +33,7 @@ describe('LinkedList Test', () => {
         list.addNode("Elsayed");
         list.addNode("Ahmed");
         list.insertNodeAt("test", 2);
-        expect(list.getSize()).toBe(4);
+        expect(list.getSize()).toBe(5);
     })
 
     test("Get Node from specific position", () => {
@@ -53,8 +53,22 @@ describe('LinkedList Test', () => {
         list.addNode("Elsayed");
         list.addNode("Ahmed");
         list.insertNodeAt("test", 2)
-        list.printList();
         let node = list.getNodeAt(2);
         expect(node.data).toBe("test");
-    })
+    });
+
+    test("Test Deleting node by index", () => {
+        let list = new LinkedList();
+        list.addNode("Walid");
+        list.addNode("Ahmed");
+        list.addNode("Elsayed");
+        list.addNode("Ahmed");
+        list.deleteNodeAt(2);
+
+        let node1 = list.getNodeAt(1);
+        let node2 = list.getNodeAt(2);
+
+        expect(node1.data).toBe("Ahmed");
+        expect(node2.data).toBe("Ahmed");
+    });
 })
